@@ -1,6 +1,7 @@
 
 *.tgz
 Controleurs/*.alt
+!ControleursOpt/Optimisation.alt
 ControleursOpt/*.alt
 Res/*.res
 Alt/tank.alt
