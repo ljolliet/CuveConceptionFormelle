@@ -1,0 +1,11 @@
+
+*.tgz
+Controleurs/*.alt
+ControleursOpt/*.alt
+Res/*.res
+Alt/tank.alt
+Alt/test.alt
+tank/time
+rapport.fls
+rapport.synctex.gz
+rapport/fdb_latexmk
