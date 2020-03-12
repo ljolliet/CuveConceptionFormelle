@@ -54,8 +54,11 @@ La constante \textit{nbFailures} est une constante correspondant au nombre de va
 %\lstinputlisting{Res/System0FCtrl0F3I.res}
 %\lstinputlisting{Res/System0FCtrl0F4I.res}
 \paragraph{Interprétation des résultats}
-Au départ on peut voir qu'un grand nombre de transition mènent à une fermeture de la valve aval (dec10 = 9500) et celle-ci est fermée dans 80 états (out0 = 80) soit dans environ un tier d'entre eux ce qui est beaucoup car on cherche à limiter la fermeture de la valve aval et le système ne prend en compte aucune défaillance. De plus, on peut voir qu'il y a 86 niveaux critiques et 86 situations redoutées, et environ un tier des \textit{targets} mènent à un coup gagnant.
-Après une itération, le controleur est plus performant. On peut voir que la valve se retrouve fermée moins souvent (out0 = 26). De plus, il n'y a aucun blocage ni aucune situation redoutée ou critique. Le taux de coups gagnants est également bien meilleur.
+Au départ on peut voir qu'un grand nombre de transition mènent à une fermeture de la valve aval (dec10 = 9500) et celle-ci est fermée dans 80 états (out0 = 80) 
+soit dans environ un tier d'entre eux ce qui est beaucoup car on cherche à limiter la fermeture de la valve aval et le système ne prend en compte aucune défaillance. 
+De plus, on peut voir qu'il y a 86 niveaux critiques et 86 situations redoutées, et environ un tier des \textit{targets} mènent à un coup gagnant.
+Après une itération, le controleur est plus performant. On peut voir que la valve se retrouve fermée moins souvent (out0 = 26). De plus, il n'y a aucun blocage 
+ni aucune situation redoutée ou critique. Le taux de coups gagnants est également bien meilleur.
 Apres une seconde itération, le résultat obtenu est identique au résultat précédent et l'algorithme d'arrête. Il en sera de même pour l'ensemble des résultat suivant.
 
 
@@ -67,7 +70,11 @@ Apres une seconde itération, le résultat obtenu est identique au résultat pr�
 %\lstinputlisting{Res/System1FCtrl1F4I.res}
 \paragraph{Interprétation des résultats}
 % A COMPLETER
-Suite à l'ajout d'une défaillance, on remarque tout d'abord que le nombre d'états et de transitions augmentent grandement ainsi que le nombre de niveaux critiques (NC = 329) et situations redoutées (SR = 329). Malgré tout, la proportion d'état où la valve aval est fermée est approximativement la même que lorsqu'il n'y a pas de défaillance (out0 = 300 ce qui correspond environ un tier des états). En revanche, le nombre de coup gagants par rapport au nombre de targets est faible (CCoupGagnant = 4950 pour any_t = 19450 soit environ un quart seulement) et un grand nombre d'états mènent à une situation où la valve aval est fermée.
+Suite à l'ajout d'une défaillance, on remarque tout d'abord que le nombre d'états et de transitions augmentent grandement ainsi que le nombre 
+de niveaux critiques (NC = 329) et situations redoutées (SR = 329). Malgré tout, la proportion d'état où la valve aval est fermée est approximativement 
+la même que lorsqu'il n'y a pas de défaillance (out0 = 300 ce qui correspond environ un tier des états). En revanche, le nombre de coup gagants par rapport 
+au nombre de targets est faible (CCoupGagnant = 4950 pour any_t = 19450 soit environ un quart seulement) et un grand nombre d'états mènent à une situation où 
+la valve aval est fermée.
 
 
 
