@@ -133,11 +133,23 @@ Le composant {\tt ValveVirtual} correspond à une valve parfaite. Il est possibl
 de la valve afin de laisser passer plus ou moins d'eau. La valve se stoppe (reste dans son état) dans le cas où il y aurait une défaillance.
 
 Contrairement au composant {\tt Valve}, il ne gère pas lui même s'il y a une défaillance. Il compare les valeurs \textit{rate} et 
-\textit{rateReal}, cette dernière valeur étant donnée par {\tt CtrlrVV}. Dans le cas où ces deux dernières valeurs sont différentes,
- la valve reste inactive, mais n'a pas de variable propre au caractère de blocage comme dans \tt{Valve}.
+\textit{rateReal}, cette dernière valeur étant donnée par {\tt CtrlVV}. Dans le cas où ces deux dernières valeurs sont différentes, 
+la valve reste inactive, mais n'a pas de variable propre au caractère de blocage comme dans {\tt Valve}.
 
 \subsection{Rôle du composant {\tt CtrlVV} (5 points)}
 % A COMPLETER en expliquant les mécanismes mis en oeuvre, leurs rôles et les avantages de ce contrôleur par rapport au précédent CtrlVV.
+Le {\tt CtrlVV}, contrairement au {\tt Ctrl} précédent, contient 3 {\tt ValveVirtual}. Il contient aussi 3 \textit{rate} 
+compris entre 0 et 2 correspondant aux 3 valves ainsi que le niveau actuel de la cuve entre O et \textit{nbSensors}. A tout instant, 
+le contrôleur teste si le \textit{rateReal} connu par chaque valve correspond au \textit{rate} du contrôleur. Si ce n'est pas le 
+cas, le contrôleur détecte une annomalie avec un ASSERT.
+
+Ensuite, il définit la liste des 27 événements possibles pour {\tt CtrlVV} (ddd, ddi, ddn\dots) qui correspondent à toutes les 
+combinaisons des actions sur les 3 valves.
+
+A chacun de ces événements, une suite d'opération est exécutée. Par exemple, pour \textit{ddd} le contrôleur décrémente chacune des 
+valves une à une.
+
+Le {\tt CtrlVV} présente comme avantage qu'il gère lui même les {\tt ValveVirtual} et donc que le traitement amènera à plus de performances.
 
 \section{Résultats avec le contrôleur {\tt CtrlVV}}
 \subsection{Calcul d'un contrôleur}
@@ -188,7 +200,7 @@ Pour finir, la seconde itération nous amène aucun deadlock, mais il n'y a que 
 %\lstinputlisting{Res/System3FCtrlVV3F4I.res}
 \paragraph{Interprétation des résultats}
 Avec 3 defaillances, le controleur a exactement le même comportement que précédemment, mais il y a besoin de moins d'itération. 
-Au début, beaucoup de NC et Sr, ainsi qu'un nombre de sommet contenant une valve avale fermée plus faible que les autres (valves).
+Au début, beaucoup de NC et SR, ainsi qu'un nombre de sommet contenant une valve avale fermée plus faible que les autres (valves).
 Puis après itération, on obtient exactement le même résultat que précédemment.
 
 \subsection{Calcul des contrôleurs optimisés (2 points)}
