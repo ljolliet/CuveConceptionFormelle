@@ -92,7 +92,6 @@ effet d'augmenter les situation bloquantes (deadlock passe de 93 à 96) et donc 
 \lstinputlisting{Res/System2FCtrl2F3I.res}
 \lstinputlisting{Res/System2FCtrl2F4I.res}
 \paragraph{Interprétation des résultats}
-% A COMPLETER
 Avec une deuxième défaillance, on constate encore une fois une augmentation du nombre d'états (any\_s = 1627) ce qui a pour conséquence de faire augmenter l'ensemble 
 des autres valeurs. Les proportions restent a peu près similaires aux résultats précédements (première itération avec 0 et 1 défaillance) avec un nombre de situations 
 redoutées équivalent au nombre de niveaux critiques et des états  \textit{out0},  \textit{out1} et  \textit{out2} en quantité presque similaires (un tier de chaque). En revanche, 
@@ -116,7 +115,6 @@ Au final après une troisième itération, on supprime deux états où la valve 
 
 \subsection{Calcul des contrôleurs optimisés (2 points)}
 \lstinputlisting{ControleursOpt/Optimisation.alt}
-% A COMPLETER en expliquant en quoi consiste l'optimisation mise en place.
 Dans la description du contrôleur en 1.1.3 il est écrit que le débit de la vanne aval doit être le plus important possible.
 Le fichier optimisation.alt permet de définir des priorités sur le choix des actions. On va préférer incrémenter le débit aval 
 plupart que le laisser au même niveau et on va préférer le laisser au même niveau plutôt que le décrémenter. De ce fait, on aura 
@@ -127,7 +125,6 @@ toujours le débit aval qui sera le plus élevé possible.
 
 \section{Construction d'un contrôleur initial plus performant}
 \subsection{Rôle du composant {\tt ValveVirtual}(2 points)}
-% A COMPLETER en expliquant sa sémantique et son rôle.
 Le composant {\tt ValveVirtual} correspond à une valve parfaite. Il est possible d'incrémenter ou de décrémenter l'ouverture 
 de la valve afin de laisser passer plus ou moins d'eau. La valve se stoppe (reste dans son état) dans le cas où il y aurait une défaillance.
 
