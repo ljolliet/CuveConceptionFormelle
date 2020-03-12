@@ -36,14 +36,20 @@ Le rapport est sur 20 points.
 
 \section{Rôle du fichier {\tt GNUmakefile} (2 points)}
 Le makefile effectue les calcules suivants : \\
-Pour tout les controleurs ( {\tt Ctrl}, {\tt CtrlVV}) et  pour toutes les pannes (0,1,2,3), il concaténe tout les fichiers \textit{alt} dans un seul et même fichier \textit{tank.alt}.
+Pour tous les contrôleurs ( {\tt Ctrl}, {\tt CtrlVV}) et  pour toutes les pannes (0,1,2,3), il concaténe tous les fichiers \textit{alt} dans un seul et même fichier \textit{tank.alt}.
 Puis il inititialise les valeurs \textit{NBPannes} et \textit{NomControleur} dans ces fichiers et met le résultat dans un fichier \textit{test.alt} .
 De la même façon, un fichier  \textit{system.spe} est créé et copié dans  \textit{test.spe} avec plusieurs variables initialisées. \\
-Ensuite pour toutes les iterations (0,1,2,3,4,5),le controleur est modifié en fonction de l'itération et le calcul est lancé.
-Les fichiers obtenus sont comparés et le programme coupe l'itération lorsque l'évolution stagne, c'est à dire quand deux itérations produisent un même résultat.
+Ensuite pour toutes les iterations (0,1,2,3,4,5),le contrôleur est modifié en fonction de l'itération et le calcul est lancé.
+Les fichiers obtenus sont comparés et le programme coupe l'itération lorsque l'évolution stagne, c'est-à-dire quand deux itérations produisent un même résultat.
 
 \section{Rôle de la constante {\tt nbFailures} et de l'assertion associée (1 point)}
-La constante \textit{nbFailures} est une constante correspondant au nombre de vannes pouvant tomber en panne dans le système. Une vanne en panne est une vanne qui reste pour toujours dans son état actuel. Le système en possède trois et donc \textit{nbFailures} peut prendre les valeurs 0, 1, 2 ou 3 selon le nombre de défaillance étudiées dans le système. La contrainte $nbFailures >= (V [0].fail + V [1].fail + V [2].fail)$ présente dans le système permet de s’assurer que le nombre de défaillances dans le système actuel ne dépasse pas le nombre de défaillances autorisées. Par exemple, si on test le système avec une seule défaillance et qu'une vanne est déjà défaillante (V[x].fail = 1), cette contrainte va empécher les autres vannes de disfonctionner. 
+La constante \textit{nbFailures} est une constante correspondant au nombre de vannes pouvant tomber en panne dans le système. 
+Une vanne en panne est une vanne qui reste pour toujours dans son état actuel. Le système en possède trois et donc \textit{nbFailures} 
+peut prendre les valeurs 0, 1, 2 ou 3 selon le nombre de défaillances étudiées dans le système. La contrainte 
+$nbFailures >= (V [0].fail + V [1].fail + V [2].fail)$ présente dans le système permet de s’assurer que le nombre de 
+défaillances dans le système actuel ne dépasse pas le nombre de défaillances autorisées. Par exemple, si on teste le système 
+avec une seule défaillance et qu'une vanne est déjà défaillante (V[x].fail = 1), cette contrainte va empêcher les autres vannes 
+de dysfonctionner. 
 
 \section{Résultats avec le contrôleur initial {\tt Ctrl}}
 \subsection{Calcul d'un contrôleur}
@@ -55,11 +61,11 @@ La constante \textit{nbFailures} est une constante correspondant au nombre de va
 %\lstinputlisting{Res/System0FCtrl0F4I.res}
 \paragraph{Interprétation des résultats}
 Au départ on peut voir que la valve est fermée dans 80 états (out0 = 80) 
-soit dans environ un tier d'entre eux ce qui est beaucoup car on cherche à limiter la fermeture de la valve aval et le système ne prend en compte aucune défaillance. 
+soit dans environ un tier d'entre eux ce qui est beaucoup car on cherche à limiter la fermeture de la valve avale et le système ne prend en compte aucune défaillance. 
 De plus, on peut voir qu'il y a 86 niveaux critiques et 86 situations redoutées, et environ un tier des transitions correspondent à un coup gagnant (CCoupGagnant = 1134 pour any\_t = 3472).\\
-Après une itération, le controleur est plus performant. On peut voir que la valve se retrouve fermée moins souvent (out0 = 26). De plus, il n'y a aucun blocage 
+Après une itération, le contrôleur est plus performant. On peut voir que la valve se retrouve fermée moins souvent (out0 = 26). De plus, il n'y a aucun blocage 
 ni aucune situation redoutée ou critique. Le taux de coups gagnants est également bien meilleur.
-Apres une seconde itération, le résultat obtenu est identique au résultat précédent et l'algorithme d'arrête. Il en sera de même pour l'ensemble des résultats suivants.
+Apres une seconde itération, le résultat obtenu est identique au résultat précédent et l'algorithme s'arrête. Il en sera de même pour l'ensemble des résultats suivants.
 
 
 \subsubsection{Avec 1 défaillance (0.5 point)}
@@ -69,19 +75,19 @@ Apres une seconde itération, le résultat obtenu est identique au résultat pr�
 \lstinputlisting{Res/System1FCtrl1F3I.res}
 %\lstinputlisting{Res/System1FCtrl1F4I.res}
 \paragraph{Interprétation des résultats}
-Suite à l'ajout d'une défaillance, on remarque tout d'abord que le nombre d'états et de transitions augmentent grandement ainsi que le nombre 
-de niveaux critiques (NC = 329) et situations redoutées (SR = 329). Malgré tout, la proportion d'états où la valve aval est fermée est approximativement 
-la même que lorsqu'il n'y a pas de défaillance (out0 = 300 ce qui correspond environ un tier des états). En revanche, le nombre de coups gagants par rapport 
-au nombre de transition est faible (CCoupGagnant = 4950 pour any\_t = 19450 soit environ un quart seulement) et un grand nombre d'états mènent à une situation où 
-la valve aval est fermée. \\
+Suite à l'ajout d'une défaillance, on remarque tout d'abord que le nombre d'états et de transitions augmente grandement ainsi que le nombre 
+de niveaux critiques (NC = 329) et situations redoutées (SR = 329). Malgré tout, la proportion d'états où la valve avale est fermée est approximativement 
+la même que lorsqu'il n'y a pas de défaillance (out0 = 300 ce qui correspond environ un tier des états). En revanche, le nombre de coups gagnants par rapport 
+au nombre de transitions est faible (CCoupGagnant = 4950 pour any\_t = 19450, soit environ un quart seulement) et un grand nombre d'états mènent à une situation où 
+la valve avale est fermée. \\
 Après une itération, le nombre de niveaux critiques (NC = 69) et de situations redoutées (SR = 93) diminue grandement. De plus, plus de la moitié des transitions 
-sont des coups gagants (any\_t = 2941 pour any\_t = 5230). En revanche, on voit apparaître des situations bloquantes (deadlock = 93). On s'apperçoit ici que le nombre 
+sont des coups gagants (any\_t = 2941 pour any\_t = 5230). En revanche, on voit apparaître des situations bloquantes (deadlock = 93). On s'aperçoit ici que le nombre 
 de situations redoutées correspond au nombre de situations bloquantes (SR = deadlock). Il y a également moins 
-d'états dans lesquels la valve aval est fermée que précédement en terme de proportion (le nombre total d'état diminue donc il est normal que le nombre d'état out0 
+d'états dans lesquels la valve avale est fermée que précédement en terme de proportion (le nombre total d'états diminue donc il est normal que le nombre d'états out0 
 diminue).\\
-Apres une deuxième itération, les seuls changements que l'ont peut remarquer sont au niveau des situations bloquantes et des transitions. Cette itération a diminué 
-le nombre de transitions total, en enlevant 40 transitions (dec10 passe de 5285 à 5245) et 32 coups gagnants (CCoupGagnant passe de 2941 à 2909). Celà a eut pour  
-effet d'augmenter les situation bloquantes (deadlock passe de 93 à 96) et donc de situations redoutées (SR passe de 93 à 96).
+Après une deuxième itération, les seuls changements que l'on peut remarquer sont au niveau des situations bloquantes et des transitions. Cette itération a diminué 
+le nombre de transitions total, en enlevant 40 transitions (dec10 passe de 5285 à 5245) et 32 coups gagnants (CCoupGagnant passe de 2941 à 2909). Cela a eu pour  
+effet d'augmenter les situations bloquantes (deadlock passe de 93 à 96) et donc de situations redoutées (SR passe de 93 à 96).
 
 
 
@@ -93,8 +99,8 @@ effet d'augmenter les situation bloquantes (deadlock passe de 93 à 96) et donc 
 \lstinputlisting{Res/System2FCtrl2F4I.res}
 \paragraph{Interprétation des résultats}
 Avec une deuxième défaillance, on constate encore une fois une augmentation du nombre d'états (any\_s = 1627) ce qui a pour conséquence de faire augmenter l'ensemble 
-des autres valeurs. Les proportions restent a peu près similaires aux résultats précédements (première itération avec 0 et 1 défaillance) avec un nombre de situations 
-redoutées équivalent au nombre de niveaux critiques et des états  \textit{out0},  \textit{out1} et  \textit{out2} en quantité presque similaires (un tier de chaque). En revanche, 
+des autres valeurs. Les proportions restent à peu près similaires aux résultats précédemment (première itération avec 0 et 1 défaillance) avec un nombre de situations 
+redoutées équivalent au nombre de niveaux critiques et des états  \textit{out0},  \textit{out1} et  \textit{out2} en quantité presque similaire (un tier de chaque). En revanche, 
 cette fois le nombre de transitions any\_t est supérieur aux valeurs de dec21 et dec10 et la proportion de coups gagnants est plus faible (environ un sixième des 
 transitions). \\
 Après la première itération on remarque qu'il y a un grand nombre de situations bloquantes (deadlock = 239) et ici aussi ce nombre correspond à celui des 
@@ -115,29 +121,27 @@ Au final après une troisième itération, on supprime deux états où la valve 
 
 \subsection{Calcul des contrôleurs optimisés (2 points)}
 \lstinputlisting{ControleursOpt/Optimisation.alt}
-Dans la description du contrôleur en 1.1.3 il est écrit que le débit de la vanne aval doit être le plus important possible.
-Le fichier optimisation.alt permet de définir des priorités sur le choix des actions. On va préférer incrémenter le débit aval 
+Dans la description du contrôleur en 1.1.3 il est écrit que le débit de la vanne avale doit être le plus important possible.
+Le fichier optimisation.alt permet de définir des priorités sur le choix des actions. On va préférer incrémenter le débit avale 
 plupart que le laisser au même niveau et on va préférer le laisser au même niveau plutôt que le décrémenter. De ce fait, on aura 
-toujours le débit aval qui sera le plus élevé possible.
+toujours le débit avale qui sera le plus élevé possible.
 \paragraph{Avec 0 défaillance}\
 \lstinputlisting{Res/System0FCtrl0F2I_Opt.res}
-% A COMPLETER en analysant les contrôleurs optimisés obtenus.
-Sans aucune défaillance, il n'y a pas de cas critique, est on observe qu'effectivement, qu'il 
-y a beaucoup plus de somment ayant une valve aval soit ouverte (34), soit semi-ouverte (14). Il ne reste qu'un seul état
+Sans aucune défaillance, il n'y a pas de cas critique, et on observe qu'effectivement, qu'il 
+y a beaucoup plus de somment ayant une valve avale soit ouverte (34), soit semi-ouverte (14). Il ne reste qu'un seul état
 ayant une valve fermée. On observe également qu'il n'y a aucune transition allant d'une valve semi-ouverte vers une valve fermée.
-De la même façon on a également un grand nombre de coup gagnant (142 sur 220 possible).
-L'optimisation fonctionne donc très bien et nous propose un controleur bien plus efficace que le précédent.
+De la même façon on a également un grand nombre de coup gagnant (142 sur 220 possibles).
+L'optimisation fonctionne donc très bien et nous propose un contrôleur bien plus efficace que le précédent.
 \section{Construction d'un contrôleur initial plus performant}
 \subsection{Rôle du composant {\tt ValveVirtual}(2 points)}
 Le composant {\tt ValveVirtual} correspond à une valve parfaite. Il est possible d'incrémenter ou de décrémenter l'ouverture 
 de la valve afin de laisser passer plus ou moins d'eau. La valve se stoppe (reste dans son état) dans le cas où il y aurait une défaillance.
 
-Contrairement au composant {\tt Valve}, il ne gère pas lui même s'il y a une défaillance. Il compare les valeurs \textit{rate} et 
+Contrairement au composant {\tt Valve}, il ne gère pas lui-même s'il y a une défaillance. Il compare les valeurs \textit{rate} et 
 \textit{rateReal}, cette dernière valeur étant donnée par {\tt CtrlVV}. Dans le cas où ces deux dernières valeurs sont différentes, 
 la valve reste inactive, mais n'a pas de variable propre au caractère de blocage comme dans {\tt Valve}.
 
 \subsection{Rôle du composant {\tt CtrlVV} (5 points)}
-% A COMPLETER en expliquant les mécanismes mis en oeuvre, leurs rôles et les avantages de ce contrôleur par rapport au précédent CtrlVV.
 Le {\tt CtrlVV}, contrairement au {\tt Ctrl} précédent, contient 3 {\tt ValveVirtual}. Il contient aussi 3 \textit{rate} 
 compris entre 0 et 2 correspondant aux 3 valves ainsi que le niveau actuel de la cuve entre O et \textit{nbSensors}. A tout instant, 
 le contrôleur teste si le \textit{rateReal} connu par chaque valve correspond au \textit{rate} du contrôleur. Si ce n'est pas le 
@@ -149,7 +153,7 @@ combinaisons des actions sur les 3 valves.
 A chacun de ces événements, une suite d'opération est exécutée. Par exemple, pour \textit{ddd} le contrôleur décrémente chacune des 
 valves une à une.
 
-Le {\tt CtrlVV} présente comme avantage qu'il gère lui même les {\tt ValveVirtual} et donc que le traitement amènera à plus de performances.
+Le {\tt CtrlVV} présente comme avantage qu'il gère lui-même les {\tt ValveVirtual} et donc que le traitement amènera à plus de performances.
 
 \section{Résultats avec le contrôleur {\tt CtrlVV}}
 \subsection{Calcul d'un contrôleur}
@@ -160,11 +164,11 @@ Le {\tt CtrlVV} présente comme avantage qu'il gère lui même les {\tt ValveVir
 %\lstinputlisting{Res/System0FCtrlVV0F3I.res}
 %\lstinputlisting{Res/System0FCtrlVV0F4I.res}
 \paragraph{Interprétation des résultats}
-Avec ce nouveau controleur munie de valves "virtuelles", et avec aucune défaillance, on obtient les même 
-propriétés d'état qu'avec le controleur {\tt Ctrl}. Il n'y a que les propriétés de transitions qui changent, 
-globalement elles sont toutes divisées par 2. On obtient cependant un ratio de coups gagnant / transitions possibles légèrement plus élevée.  \\
-Lors de la seconde occurence et tout comme le le premier controleur, on obtient plus aucun Deadlock, Situation Redoutée ou Niveau Critique. 
-On obtient cependant, moins de transitions, moins de transitions permettant de descrementer mais également moins de coup gagnants.
+Avec ce nouveau contrôleur muni de valves "virtuelles", et avec aucune défaillance, on obtient les mêmes
+propriétés d'état qu'avec le contrôleur {\tt Ctrl}. Il n'y a que les propriétés de transitions qui changent, 
+globalement elles sont toutes divisées par 2. On obtient cependant un ratio de coups gagnant / transitions possibles légèrement plus élevé.  \\
+Lors de la seconde occurrence et tout comme le le premier contrôleur, on obtient plus aucun Deadlock, Situation Redoutée ou Niveau Critique. 
+On obtient cependant, moins de transitions, moins de transitions permettant de décrémenter mais également moins de coups gagnants.
 
 \subsubsection{Avec 1 défaillance (0.5 point)}
 \lstinputlisting{Res/System1FCtrlVV.res}
@@ -174,10 +178,10 @@ On obtient cependant, moins de transitions, moins de transitions permettant de d
 \lstinputlisting{Res/System1FCtrlVV1F4I.res}
 \paragraph{Interprétation des résultats}
 Lorsqu'il y a une défaillance, on obtient aucun deadlock, mais plusieurs Situations Redoutées et Niveaux Critiques. 
-On a également moins de sommets contenant une vanne aval fermée, comparés aux autres niveaux d'ouverture. En ce qui concerne les 
-transitions, on obtient en obtient nettement moins qu'avec le controleur {\tt Ctrl}. \\
-Au fur et à mesure des itérations, le nombre de deadlocks et dr SR/NC diminue, jusqu'à être nul. On obtient également un nombre d'état où la valve aval est fermée
-inférieur aux autres. Comme la tendance précedente, on obtient moins de transitions que dans le controleur précédent.
+On a également moins de sommets contenant une vanne avale fermée, comparés aux autres niveaux d'ouverture. En ce qui concerne les 
+transitions, on obtient en obtient nettement moins qu'avec le contrôleur {\tt Ctrl}. \\
+Au fur et à mesure des itérations, le nombre de deadlocks et dr SR/NC diminue, jusqu'à être nul. On obtient également un nombre d'états où la valve avale est fermée
+inférieur aux autres. Comme la tendance précédente, on obtient moins de transitions que dans le contrôleur précédent.
 
 \subsubsection{Avec 2 défaillances (0.5 point)}
 \lstinputlisting{Res/System2FCtrlVV.res}
@@ -187,11 +191,11 @@ inférieur aux autres. Comme la tendance précedente, on obtient moins de transi
 %\lstinputlisting{Res/System2FCtrlVV2F4I.res}
 \paragraph{Interprétation des résultats}
 En ajoutant une défaillance, on obtient beaucoup plus de Niveau Critiques et 
-Situation Redoutées (812), ainsi que beaucoup de transitions (15894), dont très peu menant à un Coup Gagnt (2360). \\
-Cependant, après une itération, le nombre de Niveaux critiques devient nul, mais un grand nombre de deadlock apparait (70)
-sur seulement 274 états. On obtient également moins de sommets contenant une valve aval fermée (52)
+Situation Redoutées (812), ainsi que beaucoup de transitions (15894), dont très peu menant à un Coup Gagant (2360). \\
+Cependant, après une itération, le nombre de Niveaux critiques devient nul, mais un grand nombre de deadlock apparaît (70)
+sur seulement 274 états. On obtient également moins de sommets contenant une valve avale fermée (52)
 Concernant les transitions, il ya moins de transitions (725) mais toujours très peu menant à un Coup Gagnant (155).\\
-Pour finir, la seconde itération nous amène aucun deadlock, mais il n'y a que 2 sommets, les deux contenant une valve avale fermée.
+Pour finir, la seconde itération nous amène aucun deadlock, mais il n'y a que 2 sommets, les deux contenants une valve avale fermée.
 \subsubsection{Avec 3 défaillances (0.5 point)}
 \lstinputlisting{Res/System3FCtrlVV.res}
 \lstinputlisting{Res/System3FCtrlVV3F1I.res}
