@@ -119,10 +119,14 @@ Dans la description du contrôleur en 1.1.3 il est écrit que le débit de la va
 Le fichier optimisation.alt permet de définir des priorités sur le choix des actions. On va préférer incrémenter le débit aval 
 plupart que le laisser au même niveau et on va préférer le laisser au même niveau plutôt que le décrémenter. De ce fait, on aura 
 toujours le débit aval qui sera le plus élevé possible.
-\paragraph{Avec 0 défaillance}
+\paragraph{Avec 0 défaillance}\
 \lstinputlisting{Res/System0FCtrl0F2I_Opt.res}
 % A COMPLETER en analysant les contrôleurs optimisés obtenus.
-
+Sans aucune défaillance, il n'y a pas de cas critique, est on observe qu'effectivement, qu'il 
+y a beaucoup plus de somment ayant une valve aval soit ouverte (34), soit semi-ouverte (14). Il ne reste qu'un seul état
+ayant une valve fermée. On observe également qu'il n'y a aucune transition allant d'une valve semi-ouverte vers une valve fermée.
+De la même façon on a également un grand nombre de coup gagnant (142 sur 220 possible).
+L'optimisation fonctionne donc très bien et nous propose un controleur bien plus efficace que le précédent.
 \section{Construction d'un contrôleur initial plus performant}
 \subsection{Rôle du composant {\tt ValveVirtual}(2 points)}
 Le composant {\tt ValveVirtual} correspond à une valve parfaite. Il est possible d'incrémenter ou de décrémenter l'ouverture 
