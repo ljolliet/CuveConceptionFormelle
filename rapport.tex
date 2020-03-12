@@ -56,7 +56,7 @@ La constante \textit{nbFailures} est une constante correspondant au nombre de va
 \paragraph{Interprétation des résultats}
 Au départ on peut voir que la valve est fermée dans 80 états (out0 = 80) 
 soit dans environ un tier d'entre eux ce qui est beaucoup car on cherche à limiter la fermeture de la valve aval et le système ne prend en compte aucune défaillance. 
-De plus, on peut voir qu'il y a 86 niveaux critiques et 86 situations redoutées, et environ un tier des transitions correspondent à un coup gagnant (CCoupGagnant = 1134 pour any\_t = 3472).
+De plus, on peut voir qu'il y a 86 niveaux critiques et 86 situations redoutées, et environ un tier des transitions correspondent à un coup gagnant (CCoupGagnant = 1134 pour any\_t = 3472).\\
 Après une itération, le controleur est plus performant. On peut voir que la valve se retrouve fermée moins souvent (out0 = 26). De plus, il n'y a aucun blocage 
 ni aucune situation redoutée ou critique. Le taux de coups gagnants est également bien meilleur.
 Apres une seconde itération, le résultat obtenu est identique au résultat précédent et l'algorithme d'arrête. Il en sera de même pour l'ensemble des résultats suivants.
@@ -73,12 +73,12 @@ Suite à l'ajout d'une défaillance, on remarque tout d'abord que le nombre d'é
 de niveaux critiques (NC = 329) et situations redoutées (SR = 329). Malgré tout, la proportion d'états où la valve aval est fermée est approximativement 
 la même que lorsqu'il n'y a pas de défaillance (out0 = 300 ce qui correspond environ un tier des états). En revanche, le nombre de coups gagants par rapport 
 au nombre de transition est faible (CCoupGagnant = 4950 pour any\_t = 19450 soit environ un quart seulement) et un grand nombre d'états mènent à une situation où 
-la valve aval est fermée. 
+la valve aval est fermée. \\
 Après une itération, le nombre de niveaux critiques (NC = 69) et de situations redoutées (SR = 93) diminue grandement. De plus, plus de la moitié des transitions 
 sont des coups gagants (any\_t = 2941 pour any\_t = 5230). En revanche, on voit apparaître des situations bloquantes (deadlock = 93). On s'apperçoit ici que le nombre 
 de situations redoutées correspond au nombre de situations bloquantes (SR = deadlock). Il y a également moins 
 d'états dans lesquels la valve aval est fermée que précédement en terme de proportion (le nombre total d'état diminue donc il est normal que le nombre d'état out0 
-diminue).
+diminue).\\
 Apres une deuxième itération, les seuls changements que l'ont peut remarquer sont au niveau des situations bloquantes et des transitions. Cette itération a diminué 
 le nombre de transitions total, en enlevant 40 transitions (dec10 passe de 5285 à 5245) et 32 coups gagnants (CCoupGagnant passe de 2941 à 2909). Celà a eut pour  
 effet d'augmenter les situation bloquantes (deadlock passe de 93 à 96) et donc de situations redoutées (SR passe de 93 à 96).
@@ -96,8 +96,8 @@ effet d'augmenter les situation bloquantes (deadlock passe de 93 à 96) et donc 
 Avec une deuxième défaillance, on constate encore une fois une augmentation du nombre d'états (any\_s = 1627) ce qui a pour conséquence de faire augmenter l'ensemble 
 des autres valeurs. Les proportions restent a peu près similaires aux résultats précédements (première itération avec 0 et 1 défaillance) avec un nombre de situations 
 redoutées équivalent au nombre de niveaux critiques et des états  \textit{out0},  \textit{out1} et  \textit{out2} en quantité presque similaires (un tier de chaque). En revanche, 
-cette fois le nombre de transitions any\_t est supèrieur aux valeurs de dec21 et dec10 et la proportion de coups gagnants est plus faible (environ un sixième des 
-transitions). 
+cette fois le nombre de transitions any\_t est supérieur aux valeurs de dec21 et dec10 et la proportion de coups gagnants est plus faible (environ un sixième des 
+transitions). \\
 Après la première itération on remarque qu'il y a un grand nombre de situations bloquantes (deadlock = 239) et ici aussi ce nombre correspond à celui des 
 situations redoutées (deadlock = SR). On à également le nombre de coup gagnants \textit{CCoupGagnant} qui augmente par rapport au nombre de transitions \textit{any\_t}. 
 %Penser à mettre tous les noms de variables en italique
@@ -173,8 +173,12 @@ inférieur aux autres. Comme la tendance précedente, on obtient moins de transi
 \lstinputlisting{Res/System2FCtrlVV2F3I.res}
 %\lstinputlisting{Res/System2FCtrlVV2F4I.res}
 \paragraph{Interprétation des résultats}
-% A COMPLETER
-
+En ajoutant une défaillance, on obtient beaucoup plus de Niveau Critiques et 
+Situation Redoutées (812), ainsi que beaucoup de transitions (15894), dont très peu menant à un Coup Gagnt (2360). \\
+Cependant, après une itération, le nombre de Niveaux critiques devient nul, mais un grand nombre de deadlock apparait (70)
+sur seulement 274 états. On obtient également moins de sommets contenant une valve aval fermée (52)
+Concernant les transitions, il ya moins de transitions (725) mais toujours très peu menant à un Coup Gagnant (155).\\
+Pour finir, la seconde itération nous amène aucun deadlock, mais il n'y a que 2 sommets, les deux contenant une valve avale fermée.
 \subsubsection{Avec 3 défaillances (0.5 point)}
 \lstinputlisting{Res/System3FCtrlVV.res}
 \lstinputlisting{Res/System3FCtrlVV3F1I.res}
@@ -182,7 +186,9 @@ inférieur aux autres. Comme la tendance précedente, on obtient moins de transi
 \lstinputlisting{Res/System3FCtrlVV3F3I.res}
 %\lstinputlisting{Res/System3FCtrlVV3F4I.res}
 \paragraph{Interprétation des résultats}
-% A COMPLETER
+Avec 3 defaillances, le controleur a exactement le même comportement que précédemment, mais il y a besoin de moins d'itération. 
+Au début, beaucoup de NC et Sr, ainsi qu'un nombre de sommet contenant une valve avale fermée plus faible que les autres (valves).
+Puis après itération, on obtient exactement le même résultat que précédemment.
 
 \subsection{Calcul des contrôleurs optimisés (2 points)}
 % A COMPLETER en analysant les contrôleurs optimisés obtenus.
