@@ -38,7 +38,7 @@ Le rapport est sur 20 points.
 % A COMPLETER en expliquant les enchainements des calculs effectués.
 
 \section{Rôle de la constante {\tt nbFailures} et de l'assertion associée (1 point)}
-La constante \textit{nbFailures} est une constante correspondant au nombre de vannes pouvant tomber en panne dans le système. Une vanne en panne est une vanne qui reste pour toujours dans son état actuel. Le système en possède trois et donc \textit{nbFailures} peut prendre les valeurs 0, 1, 2 ou 3. La contrainte $nbFailures >= (V [0].fail + V [1].fail + V [2].fail)$ présente dans le système permet de s’assurer que la valeur de \textit{nbFailures} se situe entre 0 et 3 et qu’elle correspond au nombre de vannes en panne.
+La constante \textit{nbFailures} est une constante correspondant au nombre de vannes pouvant tomber en panne dans le système. Une vanne en panne est une vanne qui reste pour toujours dans son état actuel. Le système en possède trois et donc \textit{nbFailures} peut prendre les valeurs 0, 1, 2 ou 3 selon le nombre de défaillance étudiées dans le système. La contrainte $nbFailures >= (V [0].fail + V [1].fail + V [2].fail)$ présente dans le système permet de s’assurer que le nombre de défaillances dans le système actuel ne dépasse pas le nombre de défaillances autorisées. Par exemple, si on test le système avec une seule défaillance et qu'une vanne est déjà défaillante (V[x].fail = 1), cette contrainte va empécher les autres vannes de disfonctionner. 
 
 \section{Résultats avec le contrôleur initial {\tt Ctrl}}
 \subsection{Calcul d'un contrôleur}
