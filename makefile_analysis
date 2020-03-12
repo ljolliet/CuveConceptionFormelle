@@ -1,0 +1,6 @@
+Pour tout les controleurs (Ctrl, CtrlVV)
+Poure toutes les pannes (0,1,2,3)
+Concat de tout les fichiers dans tank.alt
+modifsetie les valeurs NBPannes et Nom Controleur et update dans test.alt
+de même pour system.spe > test.spe avec plusieurs variables
+Pour toutes les iterations (0,1,2,3,4,5)
