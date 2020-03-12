@@ -35,7 +35,12 @@ Synthèse (assistée) d'un contrôleur du niveau d'une cuve}
 Le rapport est sur 20 points.
 
 \section{Rôle du fichier {\tt GNUmakefile} (2 points)}
-% A COMPLETER en expliquant les enchainements des calculs effectués.
+Le makefile effectue les calcules suivants : \\
+Pour tout les controleurs ( {\tt Ctrl}, {\tt CtrlVV}) et  pour toutes les pannes (0,1,2,3), il concaténe tout les fichiers \textit{alt} dans un seul et même fichier \textit{tank.alt}.
+Puis il inititialise les valeurs \textit{NBPannes} et \textit{NomControleur} dans ces fichiers et met le résultat dans un fichier \textit{test.alt} .
+De la même façon, un fichier  \textit{system.spe} est créé et copié dans  \textit{test.spe} avec plusieurs variables initialisées. \\
+Ensuite pour toutes les iterations (0,1,2,3,4,5),le controleur est modifié en fonction de l'itération et le calcul est lancé.
+Les fichiers obtenus sont comparés et le programme coupe l'itération lorsque l'évolution stagne, c'est à dire quand deux itérations produisent un même résultat.
 
 \section{Rôle de la constante {\tt nbFailures} et de l'assertion associée (1 point)}
 La constante \textit{nbFailures} est une constante correspondant au nombre de vannes pouvant tomber en panne dans le système. Une vanne en panne est une vanne qui reste pour toujours dans son état actuel. Le système en possède trois et donc \textit{nbFailures} peut prendre les valeurs 0, 1, 2 ou 3 selon le nombre de défaillance étudiées dans le système. La contrainte $nbFailures >= (V [0].fail + V [1].fail + V [2].fail)$ présente dans le système permet de s’assurer que le nombre de défaillances dans le système actuel ne dépasse pas le nombre de défaillances autorisées. Par exemple, si on test le système avec une seule défaillance et qu'une vanne est déjà défaillante (V[x].fail = 1), cette contrainte va empécher les autres vannes de disfonctionner. 
