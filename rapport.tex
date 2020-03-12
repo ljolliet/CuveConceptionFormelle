@@ -90,6 +90,9 @@ Le fichier optimisation.alt permet de définir des priorités sur le choix des a
 \section{Construction d'un contrôleur initial plus performant}
 \subsection{Rôle du composant {\tt ValveVirtual}(2 points)}
 % A COMPLETER en expliquant sa sémantique et son rôle.
+Le composant {\tt ValveVirtual} correspond à une valve parfaite. Il est possible d'incrémenter ou de décrémenter l'ouverture de la valve afin de laisser passer plus ou moins d'eau. La valve se stoppe (reste dans son état) dans le cas où il y aurait une défaillance.
+
+Contrairement au composant {\tt Valve}, il ne gère pas lui même s'il y a une défaillance. Il compare les valeurs \textit{rate} et \textit{rateReal}, cette dernière valeur étant donnée par {\tt CtrlrVV}. Dans le cas où ces deux dernières valeurs sont différentes, la valve reste inactive, mais n'a pas de variable propre au caractère de blocage comme dans \tt{Valve}.
 
 \subsection{Rôle du composant {\tt CtrlVV} (5 points)}
 % A COMPLETER en expliquant les mécanismes mis en oeuvre, leurs rôles et les avantages de ce contrôleur par rapport au précédent CtrlVV.
