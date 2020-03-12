@@ -50,6 +50,9 @@ La constante \textit{nbFailures} est une constante correspondant au nombre de va
 %\lstinputlisting{Res/System0FCtrl0F4I.res}
 \paragraph{Interprétation des résultats}
 % A COMPLETER
+Au départ on peut voir qu'un grand nombre de transition mènent à une fermeture de la valve inferieur (dec10 = 9500) et celle-ci est fermée dans 80 états (out0 = 80). De plus, on peut voir qu'il y a un 86 situations critiques ou redoutées, et environ un tier des targets mènent à un coup gagnant.
+Après une itération, le controleur eest plus performant. On peut voir que la valve se retrouve fermée moins souvent (out0 = 26). De plus, il n'y a aucun blocage ni aucune situation redoutée ou critique. Le taux de coups gagnants est également meilleur.
+
 
 \subsubsection{Avec 1 défaillance (0.5 point)}
 \lstinputlisting{Res/System1FCtrl.res}
