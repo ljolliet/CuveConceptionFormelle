@@ -8,8 +8,8 @@ with SystemNbPannesFNomDuControleur do
   out0 := any_s & [V[2].rate=0];
   out1 := any_s & [V[2].rate=1];
   out2 := any_s & [V[2].rate=2];
-  dec21 := label V[2].dec & rsrc(out2);
-  dec10 := label V[2].dec & rsrc(out1);
+  dec21 := any_t & label V[2].dec & rsrc(out2);
+  dec10 := any_t & label V[2].dec & rsrc(out1);
   /* systeme d'equation au point fixe
   * CGagnant = (any_s-SR) & src(CCoupGagnant)
   * CCoupGagnant = CCoup & rtgt(EPerdant)
