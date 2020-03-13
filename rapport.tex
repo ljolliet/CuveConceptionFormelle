@@ -64,7 +64,7 @@ Au départ on peut voir que la valve est fermée dans 80 états (out0 = 80)
 soit dans environ un tier d'entre eux ce qui est beaucoup car on cherche à limiter la fermeture de la valve avale et le système ne prend en compte aucune défaillance. 
 De plus, on peut voir qu'il y a 86 niveaux critiques et 86 situations redoutées, et environ un tier des transitions correspondent à un coup gagnant (CCoupGagnant = 1134 pour any\_t = 3472).\\
 Après une itération, le contrôleur est plus performant. On peut voir que la valve se retrouve fermée moins souvent (out0 = 26). De plus, il n'y a aucun blocage 
-ni aucune situation redoutée ou critique. Le taux de coups gagnants est également bien meilleur.
+ni aucune situation redoutée ou critique. Le taux de coups gagnants est également bien meilleur et il y a peu de transitions qui décremente le débit de 1 à 0.
 Apres une seconde itération, le résultat obtenu est identique au résultat précédent et l'algorithme s'arrête. Il en sera de même pour l'ensemble des résultats suivants.
 
 
@@ -86,7 +86,7 @@ de situations redoutées correspond au nombre de situations bloquantes (SR = dea
 d'états dans lesquels la valve avale est fermée que précédement en terme de proportion (le nombre total d'états diminue donc il est normal que le nombre d'états out0 
 diminue).\\
 Après une deuxième itération, les seuls changements que l'on peut remarquer sont au niveau des situations bloquantes et des transitions. Cette itération a diminué 
-le nombre de transitions total, en enlevant 40 transitions (dec10 passe de 5285 à 5245) et 32 coups gagnants (CCoupGagnant passe de 2941 à 2909). Cela a eu pour  
+le nombre de transitions total, en enlevant des transitionsentre le débit 1 et 0 de la valve et des coups gagnants. Cela a eu pour  
 effet d'augmenter les situations bloquantes (deadlock passe de 93 à 96) et donc de situations redoutées (SR passe de 93 à 96).
 
 
@@ -100,14 +100,13 @@ effet d'augmenter les situations bloquantes (deadlock passe de 93 à 96) et donc
 \paragraph{Interprétation des résultats}
 Avec une deuxième défaillance, on constate encore une fois une augmentation du nombre d'états (any\_s = 1627) ce qui a pour conséquence de faire augmenter l'ensemble 
 des autres valeurs. Les proportions restent à peu près similaires aux résultats précédemment (première itération avec 0 et 1 défaillance) avec un nombre de situations 
-redoutées équivalent au nombre de niveaux critiques et des états  \textit{out0},  \textit{out1} et  \textit{out2} en quantité presque similaire (un tier de chaque). En revanche, 
-cette fois le nombre de transitions any\_t est supérieur aux valeurs de dec21 et dec10 et la proportion de coups gagnants est plus faible (environ un sixième des 
+redoutées équivalent au nombre de niveaux critiques et des états  \textit{out0},  \textit{out1} et  \textit{out2} en quantité presque similaire (un tier de chaque). La proportion de coups gagnants est plus faible (environ un sixième des 
 transitions). \\
 Après la première itération on remarque qu'il y a un grand nombre de situations bloquantes (deadlock = 239) et ici aussi ce nombre correspond à celui des 
 situations redoutées (deadlock = SR). On à également le nombre de coup gagnants \textit{CCoupGagnant} qui augmente par rapport au nombre de transitions \textit{any\_t}. 
 %Penser à mettre tous les noms de variables en italique
 La deuxième itération réduit le nombre d'états notamment ceux ou la valve est fermée (\textit{out0}) et le nombre de décrémentation du débit de la valve du niveau 2 à 
-1(\textit{dec21}). 
+1(\textit{dec21}). \\
 Au final après une troisième itération, on supprime deux états où la valve à un débit de 2 ce qui réduit de 1 le nombre de situations bloquantes.
 
 \subsubsection{Avec 3 défaillances (0.5 point)}
@@ -117,8 +116,12 @@ Au final après une troisième itération, on supprime deux états où la valve 
 \lstinputlisting{Res/System3FCtrl3F3I.res}
 %\lstinputlisting{Res/System3FCtrl3F4I.res}
 \paragraph{Interprétation des résultats}
-% A COMPLETER
-
+Avec trois défaillances, on a au départ presque autant de coups gagants (7908) que de décrémentations vers 1 et vers 0 (respectivement 7242 et 6974) pour 57696 transitions en tout.\\
+Après une itération, on remarque qu'il y a une majorité d'états \textit{out1} et peu d'états \textit{out0}. Le nombre de coups gagnants augmente et l'ensemble des transitions 
+de décrémentations est faible. De plus, il n'y a aucun niveau critique. En revanche il y a un grand nombre de situations bloquantes (112). \\
+Enfin après une deuxième itération, on s'apperçoit qu'on ne peut pas avoir la valve ouverte en débit 2 (\textit{out2} = 0). Il n'y a également plus aucune transition pour 
+décrémenter le niveau de la valve. Les trois valves étant défaillantes, leur débit sera identique à celui initial tout le long du déroulement. Il y encore des situations 
+bloquantes, mais plus de la moitié des tansitions sont des coups gagnants.
 \subsection{Calcul des contrôleurs optimisés (2 points)}
 \lstinputlisting{ControleursOpt/Optimisation.alt}
 Dans la description du contrôleur en 1.1.3 il est écrit que le débit de la vanne avale doit être le plus important possible.
